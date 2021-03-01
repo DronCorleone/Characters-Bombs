@@ -2,10 +2,12 @@
 
 public abstract class BaseBomb : MonoBehaviour
 {
-    private int _damage;
-    private int _radius;
+    protected int _damage;
+    protected int _radius;
+    protected bool _isActive;
 
 
-    protected abstract void SetPower();
+    public abstract void Setup(GameSettings settings);
+    public abstract void Activate(bool isActive);
     protected abstract void Explode();
 }
