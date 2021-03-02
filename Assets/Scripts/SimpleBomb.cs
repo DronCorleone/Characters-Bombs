@@ -5,20 +5,23 @@
 public class SimpleBomb : BaseBomb
 {
     private Rigidbody _rigidbody;
+    private Vector3 _poolCoordinates;
 
-
-    public override void Activate(bool isActive)
-    {
-        //TODO
-    }
 
     public override void Setup(GameSettings settings)
     {
         _damage = settings.SimpleBombDamage;
         _radius = settings.SimpleBombRadius;
 
+        _poolCoordinates = settings.BombPoolCoordinates;
+
         _rigidbody = GetComponent<Rigidbody>();
         _rigidbody.isKinematic = true;
+    }
+
+    public override void Activate(bool isActive)
+    {
+        _rigidbody.isKinematic = !isActive;
     }
 
     private void OnCollisionEnter(Collision collision)

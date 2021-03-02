@@ -10,4 +10,8 @@ public class GameSettings : ScriptableObject
     [Header("Simple Bomb settings")]
     public int SimpleBombDamage;
     public int SimpleBombRadius;
+
+    [Header("Bomb cortroller")]
+    public float BombSpawnDelay;
+    public Vector3 BombPoolCoordinates;
 }

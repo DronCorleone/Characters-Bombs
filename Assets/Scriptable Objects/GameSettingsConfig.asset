@@ -15,3 +15,5 @@ MonoBehaviour:
   SimpleCharHP: 50
   SimpleBombDamage: 20
   SimpleBombRadius: 10
+  BombSpawnDelay: 3
+  BombPoolCoordinates: {x: -30, y: -30, z: 0}
