@@ -35,18 +35,16 @@ public class SimpleBomb : BaseBomb
 
     protected override void Explode()
     {
-        RaycastHit[] characters = Physics.SphereCastAll(transform.position, _radius, transform.position, _onlyCharactersMask);
+        Collider[] charactersInDanger = Physics.OverlapSphere(transform.position, _radius, _onlyCharactersMask);
 
-        if (characters != null)
+        if (charactersInDanger != null)
         {
-            for (int i = 0; i < characters.Length; i++)
+            for (int i = 0; i < charactersInDanger.Length; i++)
             {
-                if (characters[i].collider.gameObject.GetComponent<BaseCharacter>())
+                if (Physics.Raycast(transform.position, charactersInDanger[i].gameObject.transform.position, 
+                    Vector3.Distance(transform.position, charactersInDanger[i].transform.position), _onlyWallsMask) == false)
                 {
-                    if (Physics.Raycast(transform.position, characters[i].transform.position, _onlyWallsMask) == false)
-                    {
-                        characters[i].collider.gameObject.GetComponent<BaseCharacter>().GetDamage(_damage);
-                    }
+                    charactersInDanger[i].gameObject.GetComponent<BaseCharacter>().GetDamage(_damage);
                 }
             }
         }
