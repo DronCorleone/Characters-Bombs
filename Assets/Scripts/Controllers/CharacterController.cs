@@ -23,7 +23,7 @@ public class CharacterController : MonoBehaviour
     {
         if (_characters.Count == 0) return;
 
-        for (int i = 0; i <= _characters.Count; i++)
+        for (int i = 0; i < _characters.Count; i++)
         {
             _characters[i].Setup(_settings);
         }

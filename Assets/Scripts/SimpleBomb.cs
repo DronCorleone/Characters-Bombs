@@ -22,6 +22,7 @@ public class SimpleBomb : BaseBomb
     public override void Activate(bool isActive)
     {
         _rigidbody.isKinematic = !isActive;
+        _isActive = isActive;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -32,5 +33,7 @@ public class SimpleBomb : BaseBomb
     protected override void Explode()
     {
         //TODO
+        transform.position = _poolCoordinates;
+        Activate(false);
     }
 }

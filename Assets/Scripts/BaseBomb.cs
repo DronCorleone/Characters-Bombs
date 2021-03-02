@@ -6,6 +6,11 @@ public abstract class BaseBomb : MonoBehaviour
     protected int _radius;
     protected bool _isActive;
 
+    public bool IsActive
+    {
+        get => _isActive;
+    }
+
 
     public abstract void Setup(GameSettings settings);
     public abstract void Activate(bool isActive);
